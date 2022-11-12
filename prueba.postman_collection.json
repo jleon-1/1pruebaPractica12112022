@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "6f826186-73d3-4432-a064-d167cdba428c",
+		"name": "prueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20025522"
+	},
+	"item": [
+		{
+			"name": "obtener usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1000/api/usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener empleados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1000/api/usuario/empleados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"usuario",
+						"empleados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"empleado\",\r\n    \"correo\": \"empleado@hotmail.com\",\r\n    \"password\": \"contraseña\",\r\n    \"rol\": \"EMPLEADO_ROL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1000/api/usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"correo\": \"test@hotmail.com\",\r\n    \"password\": \"contraseña\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear rol de pago",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzZmY2Q3NDNiYjE3NWRlYjlmODZhOWUiLCJpYXQiOjE2NjgyNzIxMjcsImV4cCI6MTY2ODg3NjkyN30.x8vEjqtzAxOdFlbinfodKE_LSEeGpUZPVbmFlK83yZM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"empleadoId\": \"636fcd743bb175deb9f86a9e\",\r\n    \"asistenteId\": \"636fd0db769ba2367f7e9704\",\r\n    \"sueldo\": \"650\",\r\n    \"ingreso\": \"0\",\r\n    \"descuento\": \"0\",\r\n    \"netoPagar\": \"600\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1000/api/rol-pago",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"rol-pago"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener rol de pagos por empleados",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzZmY2Q3NDNiYjE3NWRlYjlmODZhOWUiLCJpYXQiOjE2NjgyNzIxMjcsImV4cCI6MTY2ODg3NjkyN30.x8vEjqtzAxOdFlbinfodKE_LSEeGpUZPVbmFlK83yZM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:1000/api/rol-pago/636fcd743bb175deb9f86a9e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"rol-pago",
+						"636fcd743bb175deb9f86a9e"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
