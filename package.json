@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "install-server": "npm install --prefix server",
-    "install-client": "npm install --prefix client",
-    "install": "npm run install-server && npm run install-client",
+    "install-cliente": "npm install --prefix cliente",
+    "install": "npm run install-server && npm run install-cliente",
     "server": "npm run watch --prefix server",
-    "client": "npm start --prefix client",
-    "watch": "npm run server & npm run client",
-    "deploy": "npm run build --prefix client && npm start --prefix server"
+    "cliente": "npm start --prefix cliente",
+    "watch": "npm run server & npm run cliente",
+    "deploy": "npm run build --prefix cliente && npm start --prefix server"
   },
   "keywords": [],
   "author": "",

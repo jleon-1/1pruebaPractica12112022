@@ -1,10 +1,18 @@
 
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 const UsuarioSchema = Schema({
     nombre: {
         type: String,
         required: [true, 'El nombre es obligatorio']
+    },
+    sueldo: {
+        type: Types.Decimal128,
+        default: 0
+    },
+    prestamo: {
+        type: Types.Decimal128,
+        default: 0
     },
     correo: {
         type: String,

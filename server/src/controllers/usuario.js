@@ -1,50 +1,89 @@
-const { response, request } = require('express');
-const bcryptjs = require('bcryptjs');
+const { response, request } = require("express");
+const bcryptjs = require("bcryptjs");
 
+const Usuario = require("../models/usuario");
+const { generarJWT } = require("../helpers");
 
-const Usuario = require('../models/usuario');
-const { generarJWT } = require('../helpers');
+const usuariosGet = async (req = request, res = response) => {
+   const { limite = 5, desde = 0 } = req.query;
+   const query = { estado: true };
 
-const usuariosGet = async(req = request, res = response) => {
+   const [total, usuarios] = await Promise.all([
+      Usuario.countDocuments(query),
+      Usuario.find(query).skip(Number(desde)).limit(Number(limite)),
+   ]);
 
-    const { limite = 5, desde = 0 } = req.query;
-    const query = { estado: true };
+   res.json({
+      total,
+      usuarios,
+   });
+};
 
-    const [ total, usuarios ] = await Promise.all([
-        Usuario.countDocuments(query),
-        Usuario.find(query)
-            .skip( Number( desde ) )
-            .limit(Number( limite ))
-    ]);
+const getEmpleados = async (req = request, res = response) => {
+   const { limite = 5, desde = 0 } = req.query;
+   const query = { estado: true, rol: "EMPLEADO_ROL" };
 
-    res.json({
-        total,
-        usuarios
-    });
-}
+   const [total, usuarios] = await Promise.all([
+      Usuario.countDocuments(query),
+      Usuario.find(query).skip(Number(desde)).limit(Number(limite)),
+   ]);
 
-const usuariosPost = async(req, res = response) => {
-    
-    const { nombre, correo, password, rol } = req.body;
-    const usuario = new Usuario({ nombre, correo, password, rol });
+   res.json({
+      total,
+      usuarios,
+   });
+};
 
-    // Encriptar la contraseña
-    const salt = bcryptjs.genSaltSync();
-    usuario.password = bcryptjs.hashSync( password, salt );
+const crearAsistente = async (req, res = response) => {
+   const { nombre, correo, password } = req.body;
+   const usuario = new Usuario({ nombre, correo, password, rol: 'RH_ROL' });
 
-    // Guardar en BD
-    await usuario.save();
+   // Encriptar la contraseña
+   const salt = bcryptjs.genSaltSync();
+   usuario.password = bcryptjs.hashSync(password, salt);
 
-    // Generar el JWT
-    const token = await generarJWT( usuario.id );
+   // Guardar en BD
+   await usuario.save();
 
-    res.json({
-        usuario,
-        token
-    });
-}
+   // Generar el JWT
+   const token = await generarJWT(usuario.id);
+
+   res.json({
+      usuario,
+      token,
+   });
+};
+
+const crearEmpleado = async (req, res = response) => {
+   const { nombre, correo, password, sueldo, prestamo } = req.body;
+   const usuario = new Usuario({
+      nombre,
+      correo,
+      password,
+      rol: "EMPLEADO_ROL",
+      sueldo,
+      prestamo,
+   });
+
+   // Encriptar la contraseña
+   const salt = bcryptjs.genSaltSync();
+   usuario.password = bcryptjs.hashSync(password, salt);
+
+   // Guardar en BD
+   await usuario.save();
+
+   // Generar el JWT
+   const token = await generarJWT(usuario.id);
+
+   res.json({
+      usuario,
+      token,
+   });
+};
 
 module.exports = {
-    usuariosGet,
-    usuariosPost,
-}
+   usuariosGet,
+   crearAsistente,
+   crearEmpleado,
+   getEmpleados,
+};
