@@ -10,7 +10,7 @@ interface PlanModel extends mongoose.Model<PlanDoc> {
     build(attrs: AtributosPlan): PlanDoc;
 }
 
-interface PlanDoc extends mongoose.Document {
+export interface PlanDoc extends mongoose.Document {
     nombre: string;
     precio: number;
     cantidadPerfiles: number;
@@ -29,6 +29,9 @@ const PlanSchema = new mongoose.Schema({
     cantidadPerfiles: {
         type: Number,
         required: [true, 'la cantidad maxima de perfiles por usuario del plan es obligatorio']
+    },
+    descripcion: {
+        type: String,
     },
     status: {
         type: Boolean,

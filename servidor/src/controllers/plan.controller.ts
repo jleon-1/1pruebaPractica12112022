@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import PlanService from "../services/plan";
+import { Request, Response, NextFunction } from 'express';
+import PlanService, { ContratarPlanAtributos } from "../services/plan";
 import { NoAutorizadoError } from "../utils/errors/no-autorizado-error";
 
 const crearPlan = async(req: any ,res: Response) => {
@@ -20,7 +20,23 @@ const obtenerPlanes = async(req: Request,res: Response) => {
     res.status(200).json(respuesta)
 }
 
+const contratarPlan = async(req: Request, res: Response, next: NextFunction) => {
+    const { id } = req.params;
+    const atributosContrato = {
+        usuarioId: req.usuario?.id!,
+        planId: id
+    }
+
+    try {
+        const respuesta = await PlanService.contratarPlan(atributosContrato);
+        res.status(200).json(respuesta)
+    } catch (error) {
+        next(error)
+    }
+}
+
 export {
     crearPlan,
-    obtenerPlanes
+    obtenerPlanes,
+    contratarPlan
 }

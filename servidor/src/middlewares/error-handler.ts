@@ -9,6 +9,7 @@ export const errorHandler = (
     next: NextFunction
 ) => {
     if (err instanceof ErrorPersonalizado){
+        
         return res.status(err.codigoStatus).send({ errores: err.serializarError() })
     }
 

@@ -4,7 +4,7 @@ import { PasswordManager } from '../services/password-manager';
 interface AtributosUsuario {
     correo: string;
     contrasena: string;
-    planId?: string;
+    plan?: string;
     esAdmin?: boolean
 }
 
@@ -13,7 +13,7 @@ interface UsuarioModel extends mongoose.Model<UsuarioDoc> {
 }
 
 //interfaz que describe las propiedades que el documento de User tiene
-interface UsuarioDoc extends mongoose.Document {
+export interface UsuarioDoc extends mongoose.Document {
     correo: string;
     contrasena: string;
     esAdmin: boolean;

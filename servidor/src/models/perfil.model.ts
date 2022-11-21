@@ -2,6 +2,7 @@ import mongoose, {  Schema } from 'mongoose';
 
 interface AtributosPerfil {
     nombre: string;
+    usuario: string;
     imagen?: string
 }
 
@@ -9,9 +10,10 @@ interface PerfilModel extends mongoose.Model<PerfilDoc> {
     build(attrs: AtributosPerfil): PerfilDoc;
 }
 
-interface PerfilDoc extends mongoose.Document {
+export interface PerfilDoc extends mongoose.Document {
     nombre: string;
     imagen: string;
+    usuario: any;
     status: boolean;
 } 
 
@@ -23,6 +25,10 @@ const PerfilSchema = new mongoose.Schema({
     imagen: {
         type: String,
         default: null
+    },
+    usuario: {
+        type: Schema.Types.ObjectId,
+        ref: 'Usuario',
     },
     status: {
         type: Boolean,

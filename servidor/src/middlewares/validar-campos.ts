@@ -3,7 +3,7 @@ import { validationResult } from "express-validator";
 
 import { ValidacionError } from "../utils/errors/validacion-error";
 
-export const validarSolicitud = (req: Request, res: Response, next: NextFunction) => {
+export const validarCampos = (req: Request, res: Response, next: NextFunction) => {
    const errores = validationResult(req);
 
    if (!errores.isEmpty()) {

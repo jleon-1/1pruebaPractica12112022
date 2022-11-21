@@ -13,7 +13,7 @@ mongoose.connection.on('error', (err) => {
 })
 
 async function conectarMongo() {
-    await mongoose.connect(MONGO_URL!)
+    await mongoose.connect('mongodb://mongodb:27017/prueba-ft')
 }
 
 async function desconectarMongo() {

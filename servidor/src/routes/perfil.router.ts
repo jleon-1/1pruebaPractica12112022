@@ -1,10 +1,12 @@
 import { validarJWT } from './../middlewares/validar-jwt';
 import { Response, Router, Request } from "express";
-import { crearPlan, obtenerPlanes } from "../controllers/plan.controller";
+import { agregarPerfil, eliminarPerfil, obtenerPerfilesPorUsuario } from '../controllers/perfil.controller';
 
 
 const perfilRouter = Router();
 
-perfilRouter.get('/:id', obtenerPlanes);
+perfilRouter.get('/', validarJWT, obtenerPerfilesPorUsuario);
+perfilRouter.post('/agregar', validarJWT, agregarPerfil);
+perfilRouter.put('/eliminar', validarJWT, eliminarPerfil);
 
 export default perfilRouter;

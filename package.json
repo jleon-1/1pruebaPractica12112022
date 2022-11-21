@@ -1,8 +1,19 @@
 {
-  "dependencies": {
-    "@types/express": "^4.17.14",
-    "@types/mongoose": "^5.11.97",
-    "express": "^4.18.2",
-    "moongose": "^1.0.0"
-  }
+  "name": "node-basics-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-servidor": "npm install --prefix servidor",
+    "install-cliente": "npm install --prefix cliente",
+    "install": "npm run install-servidor && npm run install-cliente",
+    "servidor": "npm run start --prefix servidor",
+    "cliente": "npm start --prefix cliente",
+    "watch": "npm run servidor & npm run cliente",
+    "deploy": "npm run build --prefix cliente && npm start --prefix servidor",
+    "deploy-cluster": "npm run build --prefix cliente && npm run cluster --prefix servidor"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

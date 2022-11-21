@@ -1,31 +1,42 @@
-import { Request, Response } from "express";
-import UsuarioService from '../services/usuario';
+import { Request, Response, NextFunction } from "express";
+import UsuarioService, {
+   InicioSesionAtributos,
+   RegistroAtributos,
+} from "../services/usuario";
 import { NoAutorizadoError } from "../utils/errors/no-autorizado-error";
 
-const crearUsuarioAdmin = async(req: Request, res: Response) => {
-    const { correo, contrasena } = req.body;
+const crearUsuarioAdmin = async (req: Request, res: Response) => {
+   const { correo, contrasena } = req.body;
 
-    const respuesta = await UsuarioService.crearAdmin(correo, contrasena);
+   const respuesta = await UsuarioService.crearAdmin(correo, contrasena);
 
-    res.status(200).json(respuesta)
-}
+   res.status(200).json(respuesta);
+};
 
-const crearUsuario = async(req: Request,res: Response) => {
-    const { correo, contrasena, planId } = req.body;
+const registroUsuario = async (
+   req: Request<{}, {}, RegistroAtributos>,
+   res: Response,
+   next: NextFunction
+) => {
+   try {
+      const respuesta = await UsuarioService.registrarUsuario(req.body);
+      res.status(200).json(respuesta);
+   } catch (error) {
+      next(error);
+   }
+};
 
-    console.log(req.usuario?.esAdmin);
-    
+const inicioSesion = async (
+   req: Request<{}, {}, InicioSesionAtributos>,
+   res: Response,
+   next: NextFunction
+) => {
+   try {
+      const respuesta = await UsuarioService.inicioSesion(req.body);
+      res.status(200).json(respuesta);
+   } catch (error) {
+      next(error);
+   }
+};
 
-    if(!req.usuario?.esAdmin) {
-        throw new NoAutorizadoError();
-    }
-
-    const respuesta = await UsuarioService.crearUsuario(correo, contrasena, planId);
-
-    res.status(200).json(respuesta);
-}
-
-export {
-    crearUsuarioAdmin,
-    crearUsuario
-}
+export { crearUsuarioAdmin, registroUsuario, inicioSesion };
