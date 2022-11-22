@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - data:/data/db
+  servidor:
+    build: ./servidor
+    ports:
+      - 1000:1000
+    volumes:
+      - logs:/app/logs
+      - ./servidor:/app
+      - /app/node_modules
+    depends_on:
+      - mongodb
+  cliente:
+    build: ./cliente
+    ports:
+      - 3000:3000
+    volumes:
+      - ./cliente/src:/app/src
+    stdin_open: true
+    tty: true
+    depends_on:
+      - servidor
+volumes:
+  data:
+  logs:
