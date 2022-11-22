@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "6f826186-73d3-4432-a064-d167cdba428c",
+		"name": "prueba-png",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20025522"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"contrasena\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registrarse",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzY3NDM3ZTc3YjUzYjQxOWE0MWNkYiIsImNvcnJlbyI6InRlc3QzQHRlc3QuY29tIiwiY29udHJhc2VuYSI6ImM5NmYwYWVjMGI4ZGE5NDU3MDVlZGYxOWU2MDdjYzAxODUyZDU3MWY0ZjIyMGNiNzkwY2YwOTY0MTUyNjc5YmJkNGYzYjYwYWRjYzVmMGY5NTY1NzZlNGIzMzc4MzUyYTczYTNjYmUxZDhkZDMwZTAyMjI4ODkyYjU1Y2JhZDVlLmI0ZGMxMzMwZWY3NGRhNWEiLCJlc0FkbWluIjp0cnVlLCJzdGF0dXMiOnRydWUsImlhdCI6MTY2ODcwNzM4NH0.hub0NqU24OS2pgscdOxSzyOjinRCKm9BgdlNroTY1dM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"usuario1\",\r\n    \"contrasena\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1000/api/auth/registro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"auth",
+						"registro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear evento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2QzMWFmYTM0YmQxNDA2MTQ1MDg0ZCIsInVzZXJuYW1lIjoiYWRtaW4iLCJlc0FkbWluIjp0cnVlLCJpYXQiOjE2NjkxNTA0MDN9.ABGdy2lVzfIdOByWnnssD7YnZgjA6WfmW41GA1bXILY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"evento 1\",\r\n   \"fecha\": \"02/04/2022\",\r\n   \"organizador\": \"637d31afa34bd1406145084d\",\r\n   \"cantidadEntradas\": 100,\r\n   \"precio\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1000/api/evento/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"evento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener eventos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1000/api/evento/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"evento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Promocion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2QzMWFmYTM0YmQxNDA2MTQ1MDg0ZCIsInVzZXJuYW1lIjoiYWRtaW4iLCJlc0FkbWluIjp0cnVlLCJpYXQiOjE2NjkxNTY2MTd9.WMEFBV9A1Ro2F5FBD8WEauxRcnwxsqiG4U-3G04AiCo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"promocion 2\",\r\n    \"descuento\": 5,\r\n    \"fechaInicio\": \"02/04/2022\",\r\n    \"fechaFinalizacion\": \"12/12/2022\",\r\n    \"cantidadMin\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1000/api/promocion/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"promocion",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener promociones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1000/api/promocion/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"promocion",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "asignar evento a promocion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2QzMWFmYTM0YmQxNDA2MTQ1MDg0ZCIsInVzZXJuYW1lIjoiYWRtaW4iLCJlc0FkbWluIjp0cnVlLCJpYXQiOjE2NjkxNTY2MTd9.WMEFBV9A1Ro2F5FBD8WEauxRcnwxsqiG4U-3G04AiCo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idPromocion\": \"637d51b619402da0073ba55e\",\r\n    \"idEvento\": \"637d3a5eae4618c749a363f2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1000/api/promocion/asignar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1000",
+					"path": [
+						"api",
+						"promocion",
+						"asignar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

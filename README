@@ -1,0 +1,17 @@
+-   para la ejecucion del proyecto en docker situarse en la carpeta root (no en cliente, ni servidor)
+    y ejercutar "docker-compose up", en caso de que no funcione primero probar con "docker-compose build"
+    y descargar la imagen de mongo mediante docker
+-   En el archivo "prueba-png.postman_collection.json" se encuentra todas las url del backend que 
+    se han realizado
+-   Para obsrevar el proyecto de front dirigirse a localhost:3000
+-   El usuario admin por defecto es { username: "admin", contrasena: "1234" }
+-   Para probar url del back usar localhost:1000
+
+AVANCES
+-   Backend:    - se realizo la creacion de eventos y vista de eventos
+                - se realizo la creacion de promociones, vista de promociones y asignacion de eventos a promocion
+                - se realizo autenticacion de cuentas, registro y logeo de usuario
+        
+-   Frontend    - se realizo autenticacion de cuentas, registro y logeo de usuario}
+                - se realizo la vista de los eventos en la pantalla principal sin necesidad de logearse
+                - se realizo la creacion de eventos en la pantalla de admin 
