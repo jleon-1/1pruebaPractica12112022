@@ -1,0 +1,17 @@
+.LandContainer {
+  height: 76vh;
+  background-image: url("C:\Users\VIAMATICA\Documents\react\test-frontend\src\static\img\streaming.jpg");
+}
+
+.StylesRow {
+  height: 100%;
+}
+
+.StylesRow h1 {
+  margin-top: 170px;
+}
+
+.StylesRow h1 b{
+  color: aliceblue;
+  text-shadow: 3px 3px midnightblue;
+}
